@@ -1,0 +1,12 @@
+Rent 
+10000
+Oil
+6300
+Food
+30000
+Clothing
+5000
+Repair a car
+1000
+Other
+5000

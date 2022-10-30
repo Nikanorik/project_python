@@ -28,8 +28,6 @@ def while_number(i):
             return 10
         else:
             return 0
-
-
 def level_enter(level):
     if level == 'easy':
         print('You have 10 attempt')

@@ -32,10 +32,12 @@ def while_number(i):
 
 def level_enter(level):
     if level == 'easy':
+        print('You have 10 attempt')
         i = 1
         while i <= 10:
             i += 1 + while_number(i)
     elif level == 'hard':
+        print('You have 5 attempt')
         i = 1
         while i <= 5:
             i += 1 + while_number(i)

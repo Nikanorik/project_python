@@ -1,64 +1,66 @@
 import random
-
 from art_bj import logo
 
-def main():
-    flag = input('Do you want to play a blackjack?(y/n): ')
-    while flag == 'y':
-        print(logo)
-        cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-        list_user = []
-        list_comp = []
-        for i in range(2):
-            card_user = random.choice(cards)
-            card_comp = random.choice(cards)
-            list_comp.append(card_comp)
-            list_user.append(card_user)
-        print(f'cards user: {list_user}')
-        print(f'first card comp: {list_comp[0]}')
-        sum_user = sum(list_user)
-        sum_comp = sum(list_comp)
-        compare(sum_user,list_user,sum_comp,list_comp)
-        user_plus(cards,list_user, sum_user, list_comp,sum_comp)
-        comp_plus(cards,sum_comp, list_comp)
-        choice_winner(list_user, sum_user, list_comp,sum_comp)
-    print('Thank you!')
-def compare(sum_user,list_user,sum_comp,list_comp):
-    if (sum_user > 21) and (11 in list_user):
-        sum_user -= 10
-    if (sum_comp > 21) and (11 in list_comp):
-        sum_comp -= 10
-def user_plus(cards,list_user, sum_user, list_comp,sum_comp):
-    flag2 = input('Do you want give card?(y/n): ')
-    while flag2 == 'y':
-        card_user = random.choice(cards)
-        list_user.append(card_user)
-        sum_user += card_user
-        print(f'cards user: {list_user}')
-        print(f'first card comp: {list_comp[0]}')
-        if sum_user <= 21:
-            flag2 = input('Do you want more card?(y/n): ')
+def deal_card():
+    '''Return a random card from the deck.'''
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+
+def calculate_score(cards):
+    if sum(cards) == 21 and len(cards) == 2:
+        return 0
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)
+    return sum(cards)
+
+
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return 'Draw!!!'
+    elif user_score == 0:
+        return 'You win!!! You have blackjack!'
+    elif computer_score == 0:
+        return 'You Lose!!! Computer have blackjack!'
+    elif user_score > 21:
+        return 'You Lose!'
+    elif computer_score > 21:
+        return 'Comp Lose!'
+    elif user_score > computer_score:
+        return 'You win!!!'
+    else:
+        return 'Computer Win!!!'
+def play_game():
+    print(logo)
+    user_cards = []
+    computer_cards = []
+    is_game_over = False
+    for _ in range(2):
+        user_cards.append(deal_card())
+        computer_cards.append(deal_card())
+    while not is_game_over:
+        user_score = calculate_score(user_cards)
+        computer_score = calculate_score(computer_cards)
+        print(f'Your cards next: {user_cards} and score: {user_score}')
+        print(f'First card computer: {computer_cards[0]}')
+
+        if user_score == 0 or computer_score == 0 or user_score > 21:
+            is_game_over = True
         else:
-            print(f'user Enumeration: {list_user}, score:{sum_user}. Winner comp {list_comp}, score:{sum_comp}!!!')
-            flag2 = 'n'
-def comp_plus(cards,sum_comp, list_comp):
-    flag3 = True
-    while flag3:
-        if sum_comp < 17:
-            card_comp = random.choice(cards)
-            list_comp.append(card_comp)
-            sum_comp += card_comp
-        else:
-            flag3 = False
-def choice_winner(list_user, sum_user, list_comp,sum_comp):
-    if sum_comp <= 21 and sum_user < 21 and sum_user < sum_comp:
-        print(f'Winner comp, cards user: {list_user}, score:{sum_user}; cards comp : {list_comp}, score:{sum_comp}')
-    elif sum_comp <= 21 and sum_user <= 21 and sum_user == sum_comp:
-        print(f'DRAW!!! cards user: {list_user}, score:{sum_user}; cards comp : {list_comp}, score:{sum_comp}')
-    elif sum_comp < 21 and sum_user <= 21 and sum_comp < sum_user:
-        print(f'Winner user, cards user: {list_user}, score:{sum_user}; cards comp : {list_comp}, score:{sum_comp}')
-    elif sum_comp > 21 and sum_user <= 21:
-        print(f'comp Enumeration: {list_comp},score:{sum_comp}. Winner user {list_user}, score:{sum_user}!!!')
-    flag = input('Do you want more to play a blackjack?(y/n): ')
-if __name__ == '__main__':
-    main()
+            user_should_deal = input('Type "y" to get another card, type "n" to pass: ')
+            if user_should_deal == 'y':
+                user_cards.append(deal_card())
+            else:
+                is_game_over = True
+    while computer_score != 0 and computer_score < 17:
+        computer_cards.append(deal_card())
+        computer_score = calculate_score(computer_cards)
+    print(
+        f'Final hand user: {user_cards} and score : {user_score}; '
+        f'final hand computer: {computer_cards} and score: {computer_score}')
+    print(compare(user_score,computer_score))
+while input('You want to game in blackjack?(y/n): '):
+    play_game()
+print('Thank you!')

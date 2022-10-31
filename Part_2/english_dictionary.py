@@ -23,7 +23,9 @@ def main():
                   'groccery store': 'продуктовый магазин', 'give present': 'дарить подарки',
                   'brush teeth': 'чистить зубы', 'take a shower': 'принимать душ', 'film videos': 'делать видео',
                   'run in the forest': 'бегать в лесу', 'why are you at home': 'почему ты дома?', 'dirty': 'грязный',
-                  'single': 'одинокий', 'where are you from': 'откуда ты?', 'there': 'там', 'i am out': 'я на руже'}
+                  'single': 'одинокий', 'where are you from': 'откуда ты?', 'there': 'там', 'i am out': 'я на руже',
+                  'much love': 'много любви', 'much joi': 'много радости', 'much tolerance': 'много терпения',
+                  'much jealosy': 'много ревности', 'much passion': 'много страсти', 'much knowledge': 'много знаний', }
     flag = True
     check_plus = 0
     check_minus = 0

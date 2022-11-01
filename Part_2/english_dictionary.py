@@ -25,7 +25,19 @@ def main():
                   'run in the forest': 'бегать в лесу', 'why are you at home': 'почему ты дома?', 'dirty': 'грязный',
                   'single': 'одинокий', 'where are you from': 'откуда ты?', 'there': 'там', 'i am out': 'я на руже',
                   'much love': 'много любви', 'much joi': 'много радости', 'much tolerance': 'много терпения',
-                  'much jealosy': 'много ревности', 'much passion': 'много страсти', 'much knowledge': 'много знаний', }
+                  'much jealosy': 'много ревности', 'much passion': 'много страсти', 'much knowledge': 'много знаний',
+                  'living': 'живущие', 'are there': 'есть ли', 'pets': 'домашние питомцы',
+                  'wild animal': 'дикое животное', 'speak the language': 'говорить на языке',
+                  'smoke cigarettes': 'курить сигареты', 'how manu friends do you have': 'сколько друзей ты имеешь?',
+                  'how much work do you have': 'сколько работы ты имеешь?',
+                  'how much coffee do you drink': 'сколько кофе ты пьешь?', 'candies': 'конфеты', 'candy': 'конфета',
+                  'siblings': 'братья и сестры',
+                  'how much light is there in the room': 'сколько света в этой комнате?', 'garage': 'гараж',
+                  'i read much': 'я много читаю', 'i travel much': 'я много путешествую',
+                  'little': ' мало(неисчисляемое)', 'few': 'мало(исчисляемое)', 'a little': 'несколье(неисчисляемое)',
+                  'a few': 'мало(исчисляемое)', 'he gives us many apples': 'он дает нам много яблок',
+                  'spend time': 'проводить время', 'i have no time': 'у меня нет времени', 'exercise book': 'тетрадь',
+                  'chalk': 'мел', 'snow': 'снег', 'article': 'статья', 'soup': 'мыло', 'grass': 'трава', 'palace': ' дворец'}
     flag = True
     check_plus = 0
     check_minus = 0

@@ -16,7 +16,7 @@ def examination_password(cod):
     if correct == True and lower == True and upper_one == True and int_one == True:
         print('Password Good')
     else:
-        print('Password Bad')
+        print('Password very Bad')
 
 
 if __name__ == '__main__':
